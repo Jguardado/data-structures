@@ -29,7 +29,7 @@ var Queue = function(){
   someInstance.size = function(){
     return size;
   };
-  console.log(storageArr)
+  // console.log(storageArr)
   // for(var i=0; i<storageArr.length; i++){
   //   storage[i] = storageArr[i];
   // }
