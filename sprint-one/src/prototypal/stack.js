@@ -9,7 +9,7 @@ var Stack = function() {
 };
 
 var stackMethods= {};
-console.log(stackMethods.prototype)
+// console.log(stackMethods.prototype)
 // stackMethods.prototype.push
   stackMethods.push = function(value){
     this.storage[this.sizes] = value;
