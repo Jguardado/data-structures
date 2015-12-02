@@ -6,7 +6,7 @@ var Stack = function() {
 };
 
 Stack.prototype.size = function(){
-  return this.sizes
+  return this.sizes;
 }
 Stack.prototype.push = function(value){
   this.storage[this.sizes] = value;
@@ -17,7 +17,7 @@ Stack.prototype.pop = function(){
   this.sizes--;
   var returnVal = this.storage[this.sizes];
   this.storage[this.sizes] = undefined;
-  return returnVal
+  return returnVal;
   }
 }
 
