@@ -1,31 +1,37 @@
 var Stack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  var storage = {};
-  var size = 0;
 
-  stackMethods.push = function(value){
-    storage[size] = value;
-    size++;
+  var obj = Object.create(Stack.prototype);
+  obj.storage = {};
+  obj.sizes = 0;
+   return obj;
+};
+
+
+// stackMethods.prototype.push
+  Stack.prototype.push = function(value){
+    this.storage[this.sizes] = value;
+    this.sizes++;
+    // console.log(obj.sizes); 
   };
 
-  stackMethods.pop = function(){
-    if(size > 0){
-    size--;
-    var returnVal = storage[size];
-    storage[size] = undefined;
+  Stack.prototype.pop = function(){
+    if(this.sizes > 0){
+    this.sizes--;
+    var returnVal = this.storage[this.sizes];
+    this.storage[this.sizes] = undefined;
     return returnVal;
     }
   }
 
-  stackMethods.size = function(){
-    return size;
+  Stack.prototype.size = function(){
+    return this.sizes;
   }
+var stackMethods= new Stack;
+// // console.log(stackMethods);
+// // console.log(Stack.prototype);
 
-  return stackMethods;
-};
+//   // return stackMethods;
 
-console.log(Stack.prototype);
-var stackMethods = {};
-
-
+// //Why are or prototype methods not making adjustments to our object?
