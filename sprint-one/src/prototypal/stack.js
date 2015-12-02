@@ -2,21 +2,22 @@ var Stack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
 
-  var obj = Object.create(Stack.prototype);
+  var obj = Object.create(stackMethods);
   obj.storage = {};
   obj.sizes = 0;
    return obj;
 };
 
-
+var stackMethods= {};
+console.log(stackMethods.prototype)
 // stackMethods.prototype.push
-  Stack.prototype.push = function(value){
+  stackMethods.push = function(value){
     this.storage[this.sizes] = value;
     this.sizes++;
     // console.log(obj.sizes); 
   };
 
-  Stack.prototype.pop = function(){
+  stackMethods.pop = function(){
     if(this.sizes > 0){
     this.sizes--;
     var returnVal = this.storage[this.sizes];
@@ -25,10 +26,9 @@ var Stack = function() {
     }
   }
 
-  Stack.prototype.size = function(){
+  stackMethods.size = function(){
     return this.sizes;
   }
-var stackMethods= new Stack;
 // // console.log(stackMethods);
 // // console.log(Stack.prototype);
 
