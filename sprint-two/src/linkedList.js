@@ -7,28 +7,49 @@ var LinkedList = function(){
 
   list.addToTail = function(value){
     //set value of node.next of current node to 
-      //debugger;
       if(list.tail === null){
         list.head = new Node(value);
         list.tail = list.head;
       } else{
 
-      var currentNode = list.tail;
-      list.head.next = currentNode;
+      var oldTail = list.tail;
       list.tail = new Node(value);
+      oldTail.next = list.tail;
       }
   };
 
   list.removeHead = function(){
     //Protect against negative values (size of list never below zero)
+    var outputHeadValue = list.head.value;
     var nextNode = list.head.next
     list.head = undefined;
     list.head = nextNode;    
-
+    return outputHeadValue;
   };
 
   list.contains = function(target){
-  };
+  //debugger;
+    var startSearch = list.head;
+
+    var traverseNodes = function(currentNode){
+        if (currentNode.next === null){
+          if(currentNode.value === target){
+            return true;
+          }else{
+            return false;
+          }
+        }
+          
+        if(currentNode.value === target){
+          return true;
+        } else {
+          return traverseNodes(currentNode.next);
+        }
+    };
+
+   return traverseNodes(startSearch); 
+  }
+
 
   return list;
 };
