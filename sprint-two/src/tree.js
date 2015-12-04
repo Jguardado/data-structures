@@ -1,27 +1,57 @@
 var Tree = function(value){
-  var newTree = {};
+  var newTree = Object.create(treeMethods);
   newTree.value = value;
-
+  
   // your code here
-  newTree.children = null;  // fix me
+  newTree.children = [];  // fix me
+
+
+  treeMethods.addChild = function(value){
+    //debugger;
+    var childTree = Tree(value);
+    this.children.push(childTree);
+
+  };
+
+  treeMethods.contains = function(target){
+    //debugger;
+     var startPoint = newTree;
+     var found = false;
+
+     var traverseChildren = function(currentChild){
+      if(startPoint === target){
+        found = true;
+      }
+
+      if(currentChild.value === target){
+        found = true;
+      }  
+      
+      /* if(!currentChild.children){
+        found = false;
+
+      }*/
+      if (currentChild.children) {
+          for (var i = 0; i < currentChild.children.length; i++){
+            return traverseChildren(currentChild.children[i]);
+          }
+        }
+     }
+
+  traverseChildren(startPoint);
+  return found;
+  };
+
 
   return newTree;
 };
 
-
-  // your code here
-  newTree.children = null;  // fix me
-
-
 var treeMethods = {};
 
-treeMethods.addChild = function(value){
+  // // your code here
+  // newTree.children = null;  // fix me
 
-};
 
-treeMethods.contains = function(target){
-
-};
 
 
 /*
