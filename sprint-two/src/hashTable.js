@@ -8,52 +8,34 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  //Fetch a number using function stored at i;
-  //Use LimitedArray.set to store a value and that value's index
-    //debugger;
-  
-  // Check if there is a collision
-    // Access hash table's stored value at index
-    //Access hash table's property at the returned value
 
-    // Check to see if value at this key "isSet"
-  if(this[this[i]] === "isSet"){
-    console.log("conditional works")
+  var bucket = this._storage.get(i);
+
+  if(bucket === undefined){
+    this._storage.set(i, [k, v])
+  } else {
+    bucket.push([k,v])
   }
-
-
-
-  //Check if there is a value set already at this key position in storage obj
-  
-  
-
-
-
-
-
-
-
-
-
-  // if(this[i] === isSet){  
-  //   var newArr = [];
-  //   newArr[0] = _storage[0]
-  // }
-  //using the keyword "this" assign to teh object a key and vlaue pair.
-  //the key is passed in through our helpr function to produce a number index whihc is now used as i.
-  this[i] = v;
-  //we assign on the object the value provided as a parameter to be a key with its value set to 'isSet'
-  this[v] = 'isSet'; 
-
 
 
 
 };
 
+//Our retrieve function takes in a value and looks for that value in our storage array.
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
 
-  return this[i];
+  var bucket = this._storage.get(i);
+
+  if(bucket.length === 1){
+    return bucket[0][1];
+  } else if {
+    for (var j = 0; j < bucket.length; i++){
+
+    }
+  }
+//Using the helper function get we return the value the at index in the storage array
+return this._storage.get(i);
 
 };
 
