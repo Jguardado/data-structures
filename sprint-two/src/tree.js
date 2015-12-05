@@ -84,7 +84,7 @@ treeMethods.contains = function(target){
         }
       }
    }
-console.log(this);
+
 return traverseChildren(this);
 //return found;
 };
