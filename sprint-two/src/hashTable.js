@@ -14,12 +14,26 @@ HashTable.prototype.insert = function(k, v){
 
   var bucket = this._storage.get(i);
 
-  if(bucket === undefined){
-    this._storage.set(i, [k, v])
-  } else {
-    bucket.push([k,v])
-  }
+  if(!bucket){
+    bucket = [];
+    this._storage.set(i, bucket);
+  } 
 
+  var found = false;
+
+  for (var j = 0; j < bucket.length; j++) {
+    var tuple  = bucket[j];
+
+    if (tuple[0] === k){
+      tuple[1] = v;
+      found = true;
+      break;
+    }
+  }
+  
+  if (!found) {
+    bucket.push([k,v]);
+  }
 
 
 };
@@ -30,22 +44,38 @@ HashTable.prototype.retrieve = function(k){
 
   var bucket = this._storage.get(i);
 
-  if(bucket.length === 1){
-    return bucket[0][1];
-  } else if {
-    for (var j = 0; j < bucket.length; i++){
+  if(!bucket){
+    return null;
+  } 
 
+  for (var j = 0; j < bucket.length; j++){
+      var tuple = bucket[j];
+      if (tuple[0] === k){
+        return tuple[1];
+      }
     }
-  }
 //Using the helper function get we return the value the at index in the storage array
-return this._storage.get(i);
+  return null;
 
 };
 
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
 
-  this[i] = null;
+  var bucket = this._storage.get(i);
+  if( !bucket ) {
+    return null;
+  }
+
+  for (var j = 0; j < bucket.length; j++){
+    var tuple = bucket[j];
+    if (tuple[0] === k){
+      bucket.splice(j, 1);
+      return tuple[1];
+    }
+  }
+
+  return null;
 
 };
 
