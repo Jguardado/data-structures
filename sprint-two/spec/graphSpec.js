@@ -47,6 +47,7 @@ describe('graph', function() {
 
   it('should execute a callback on each node in the graph', function() {
     var connectToSatsumas = function(item) {
+    //debugger
       graph.addEdge(item, 'satsumas');
     };
     graph.addNode('satsumas');
