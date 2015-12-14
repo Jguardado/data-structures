@@ -1,6 +1,6 @@
 //making slight changes
 // Now this file is linked
-
+console.log('hi')
 var HashTable = function(){
   this._limit = 8;
   this._storage = LimitedArray(this._limit);

@@ -9,6 +9,7 @@ var Graph = function(){
 // ------------------------
 Graph.prototype.addNode = function(node){ 
   var newNode = {};
+  //console.log(node);
   newNode.value = node;
   newNode.edges = [];
 
@@ -17,6 +18,7 @@ Graph.prototype.addNode = function(node){
 
 // ------------------------
 Graph.prototype.contains = function(node){
+
   for (var i = 0; i < this.nodes.length; i++) {
     if(this.nodes[i].value === node){
       return true;
@@ -29,6 +31,7 @@ Graph.prototype.contains = function(node){
 
 // ------------------------
 Graph.prototype.removeNode = function(node){
+ 
   //debugger;
   for (var i = 0; i < this.nodes.length; i++) {
 
@@ -49,10 +52,6 @@ Graph.prototype.removeNode = function(node){
 // ------------------------
 Graph.prototype.hasEdge = function(node1, node2){
 
-  // if(typeof node1 || node2 === "object"){
-  //   var node1 = node1.value;
-  //   var node2 = node2.value;
-  // }
   //debugger
   for (var i = 0; i < this.nodes.length; i++) {
     if(this.nodes[i].value === node1){
@@ -71,6 +70,14 @@ Graph.prototype.hasEdge = function(node1, node2){
 
 // ------------------------
 Graph.prototype.addEdge = function(node1, node2){
+  if(typeof node1 === "object"){
+    var node1 = node1.value;
+  }
+
+  if(typeof node2 === "object"){
+    var node2 = node2.value;
+  }
+
   //debugger;
   for (var i = 0; i < this.nodes.length; i++) {
     if(this.nodes[i].value === node1){
@@ -115,9 +122,10 @@ Graph.prototype.removeEdge = function(node1, node2){
 // ------------------------
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb){
-  debugger
+  //debugger
   
   for (var i = 0; i < this.nodes.length; i++) {
+    //console.log(this.nodes[i])
     cb(this.nodes[i]);
   };
 
