@@ -14,7 +14,7 @@ var BinarySearchTree = function (value) {
 //Once located we can traverse through the tree to
 BinarySearchTree.prototype.insert = function (incomingValue) {
 
-	if (incomingValue < this.value) {
+  if (incomingValue < this.value) {
     if (this.left !== null) {
       this.left.insert(incomingValue);
     } else {

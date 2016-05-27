@@ -25,6 +25,7 @@ Graph.prototype.contains = function (node) {
       return true;
     }
   }
+
   return false;
 
 };

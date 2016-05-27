@@ -46,6 +46,7 @@ var LinkedList = function () {
     //list.head = undefined;
     //and replacing it with teh object previously stored at next
     list.head = nextNode;
+
     //retunring our previously stored output variable
     return outputHeadValue;
   };
@@ -82,7 +83,7 @@ var LinkedList = function () {
 
     //return to our contains function information retrieved from us beginning our traversal of the traverseNodes
     return traverseNodes(startSearch);
-  }
+  };
 
   //returns our object from the Linkedlist constructor
   return list;
